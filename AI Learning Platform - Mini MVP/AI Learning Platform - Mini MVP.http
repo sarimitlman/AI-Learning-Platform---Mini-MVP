@@ -1,0 +1,6 @@
+@AI_Learning_Platform___Mini_MVP_HostAddress = http://localhost:5139
+
+GET {{AI_Learning_Platform___Mini_MVP_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
