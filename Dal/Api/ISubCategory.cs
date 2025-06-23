@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Dal.Models;
 namespace Dal.Api
 {
-    public interface ISubCatagory:ICrud<SubCategory>
+    public interface ISubCategory:ICrud<SubCategory>
     {
 
     }

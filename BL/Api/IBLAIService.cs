@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL.Api
 {
-    public interface IBLPrompt
+    internal class IAIService
     {
     }
 }

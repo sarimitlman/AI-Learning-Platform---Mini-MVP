@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dal.Repository
 {
-    public class SubCategoryRepository : ISubCatagory
+    public class SubCategoryRepository : ISubCategory
     {
         private readonly IMongoCollection<SubCategory> _collection;
 
