@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BL.Services
 {
-    public class SubCategoryService : IBLSubCategory
+    public class BLSubCategoryService : IBLSubCategory
     {
         private readonly ISubCategory _subCategoryRepository;
 
-        public SubCategoryService(ISubCategory subCategoryRepository)
+        public BLSubCategoryService(ISubCategory subCategoryRepository)
         {
             _subCategoryRepository = subCategoryRepository;
         }

@@ -1,11 +1,13 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 
 namespace Dal.Models
 {
     public class Prompts
     {
+        [BindNever]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
@@ -17,6 +19,7 @@ namespace Dal.Models
         [BsonElement("prompt")]
         public string Prompt { get; set; }
 
+        [BindNever]
         [BsonElement("response")]
         public string Response { get; set; }
 

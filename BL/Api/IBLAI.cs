@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BL.Api
 {
-    internal class IAIService
+    public interface IBLAI
     {
+        Task<string> GetResponseFromAI(string prompt);
     }
+
 }
