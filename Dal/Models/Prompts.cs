@@ -7,14 +7,13 @@ namespace Dal.Models
 {
     public class Prompts
     {
-        [BindNever]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public ObjectId Id { get; set; }
 
         [BsonElement("userId")]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string UserId { get; set; }
+        public ObjectId UserId { get; set; }
 
         [BsonElement("prompt")]
         public string Prompt { get; set; }

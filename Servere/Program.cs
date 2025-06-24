@@ -22,6 +22,7 @@ builder.Services.AddScoped<IBLSubCategory, BLSubCategoryService>();
 builder.Services.AddScoped<IPrompt, PromptRepository>();
 builder.Services.AddScoped<IBLPrompt, BLPromptService>();
 builder.Services.AddHttpClient<IBLAI, BLAIService>();
+builder.Services.AddScoped<IBLAdmin, BLAdminService>();
 
 
 

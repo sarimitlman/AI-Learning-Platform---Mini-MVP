@@ -13,6 +13,6 @@ namespace BL.Api
         public void Create(Users user);
         public Task<Users> GetUserByIdAsync(ObjectId id);
         public Task<List<Users>> GetAll();
-        public Task DeleteUser(ObjectId id);
+        
     }
 }
