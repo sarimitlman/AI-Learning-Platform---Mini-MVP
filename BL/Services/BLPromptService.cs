@@ -1,4 +1,5 @@
 ﻿using BL.Api;
+using BL.Models;
 using Dal.Api;
 using Dal.Models;
 using Dal.Repository;
@@ -21,24 +22,12 @@ namespace BL.Services
             _promptRepo = promptRepo;
             _aiService = aiService;
         }
-        public async Task<List<Prompts>> GetAll()
-        {
-            return await _promptRepo.Read();
-        }
-
-        public async Task<Prompts> GetById(ObjectId id)
+        public async Task<List<Prompts>> GetPromptsByUserIdAsync(ObjectId userId)
         {
             var all = await _promptRepo.Read();
-            return all.FirstOrDefault(p => p.Id == id.ToString());
+            return all.Where(p => p.UserId == userId).ToList();
         }
 
-        public async Task Delete(ObjectId id)
-        {
-            var all = await _promptRepo.Read();
-            var promptToDelete = all.FirstOrDefault(p => p.Id == id.ToString());
-            if (promptToDelete != null)
-                await _promptRepo.Delete(promptToDelete);
-        }
 
         public async Task Update(Prompts prompt)
         {
@@ -52,12 +41,13 @@ namespace BL.Services
             // בונים אובייקט Prompts עם ה-Response שהתקבל מה-AI
             var prompt = new Prompts
             {
-                UserId = promptRequest.UserId,
+                UserId = ObjectId.Parse(promptRequest.UserId),
                 SubCategoryId = promptRequest.SubCategoryId,
                 Prompt = promptRequest.Prompt,
-                Response = response,  // ה-response שחזר מה-AI
+                Response = response,
                 CreatedAt = DateTime.UtcNow
             };
+
 
             // שומרים את התשובה בבסיס הנתונים
             await _promptRepo.Create(prompt);

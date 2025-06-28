@@ -42,12 +42,6 @@ namespace Servere.Controllers
             return Ok(users);
         }
 
-        // DELETE api/users/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteUser(ObjectId id)
-        {
-            await _blUserService.DeleteUser(id);
-            return NoContent();
-        }
+
     }
 }

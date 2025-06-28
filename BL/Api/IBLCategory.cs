@@ -10,9 +10,8 @@ namespace BL.Api
 {
     public interface IBLCategory
     {
-        public void Create(Categories category);
+       
         public Task<Categories> GetCategoryByIdAsync(ObjectId id);
         public Task<List<Categories>> GetAll();
-        public Task DeleteCategory(ObjectId id);
     }
 }

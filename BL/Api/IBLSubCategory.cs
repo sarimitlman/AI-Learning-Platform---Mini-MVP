@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace BL.Api
 {
+
+
     public interface IBLSubCategory
     {
-        public void Create(SubCategory subCategory);
-        public Task<SubCategory> GetSubCategoryByIdAsync(ObjectId id);
-        public Task<List<SubCategory>> GetAll();
-        public Task DeleteSubCategory(ObjectId id);
+        Task<List<SubCategory>> GetSubCategoriesByCategoryIdAsync(ObjectId categoryId);
     }
+
 }

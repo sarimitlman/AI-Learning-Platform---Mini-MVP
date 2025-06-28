@@ -52,21 +52,7 @@ namespace BL.Services
             return await userRepository.Read();
         }
 
-        // DeleteUser: מחיקת משתמש
-        public async Task DeleteUser(ObjectId id)
-        {
-            var users = await userRepository.Read();
-            var userToDelete = users.FirstOrDefault(u => u.Id == id);
-
-            if (userToDelete != null)
-            {
-                await userRepository.Delete(userToDelete);
-            }
-            else
-            {
-                throw new Exception($"User with ID {id} not found.");
-            }
-        }
+     
 
 
 

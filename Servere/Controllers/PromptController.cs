@@ -1,5 +1,6 @@
 ﻿using BL;
 using BL.Api;
+using BL.Models;
 using Dal.Models;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
@@ -20,42 +21,16 @@ namespace Servere.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Prompts>>> GetAll()
+        public async Task<ActionResult<List<Prompts>>> GetByUserId([FromQuery] string userId)
         {
-            return Ok(await _promptService.GetAll());
+            if (!ObjectId.TryParse(userId, out ObjectId userObjectId))
+                return BadRequest("Invalid userId");
+
+            var result = await _promptService.GetPromptsByUserIdAsync(userObjectId);
+            return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Prompts>> GetById(string id)
-        {
-            if (!ObjectId.TryParse(id, out ObjectId objId))
-                return BadRequest("Invalid ID");
-
-            var prompt = await _promptService.GetById(objId);
-            if (prompt == null)
-                return NotFound();
-
-            return Ok(prompt);
-        }
-
-
-        [HttpPut]
-        public async Task<ActionResult> Update([FromBody] Prompts prompt)
-        {
-            await _promptService.Update(prompt);
-            return Ok();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(string id)
-        {
-            if (!ObjectId.TryParse(id, out ObjectId objId))
-                return BadRequest("Invalid ID");
-
-            await _promptService.Delete(objId);
-            return NoContent();
-        }
-        [HttpPost("create")]
+        [HttpPost]
         public async Task<IActionResult> CreatePrompt([FromBody] PromptRequest promptRequest)
         {
             await _promptService.CreateResponse(promptRequest);

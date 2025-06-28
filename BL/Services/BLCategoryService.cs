@@ -21,19 +21,7 @@ namespace BL.Services
                 this.categoryRepository = categoryRepository;
             }
 
-            // Create: יצירת קטגוריה חדשה
-            public void Create(Categories category)
-            {
-                try
-                {
-                    categoryRepository.Create(category);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Error creating category: {ex.Message}");
-                }
-            }
-
+          
             // GetCategoryById: קבלת קטגוריה לפי ID
             public async Task<Categories> GetCategoryByIdAsync(ObjectId id)
             {
@@ -52,25 +40,7 @@ namespace BL.Services
             public async Task<List<Categories>> GetAll()
             {
                 return await categoryRepository.Read();
-            }
-
-            // DeleteCategory: מחיקת קטגוריה לפי ID
-            public async Task DeleteCategory(ObjectId id)
-            {
-                var categories = await categoryRepository.Read();
-                var categoryToDelete = categories.FirstOrDefault(c => c.Id == id);
-
-                if (categoryToDelete != null)
-                {
-                    await categoryRepository.Delete(categoryToDelete);
-                }
-                else
-                {
-                    throw new Exception($"Category with ID {id} not found.");
-                }
-            }
-
-            
+            }   
         }
     }
 

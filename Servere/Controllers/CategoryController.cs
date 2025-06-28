@@ -40,28 +40,6 @@ namespace Servere.Controllers
 
             return Ok(category);
         }
-
-        // POST api/category
-        [HttpPost]
-        public ActionResult CreateCategory([FromBody] Categories category)
-        {
-            if (category == null)
-                return BadRequest("Category is null.");
-
-            _blCategory.Create(category);
-            return Ok();
-        }
-
-        // DELETE api/category/{id}
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteCategory(string id)
-        {
-            if (!ObjectId.TryParse(id, out ObjectId objectId))
-                return BadRequest("Invalid ID format.");
-
-            await _blCategory.DeleteCategory(objectId);
-            return NoContent(); // 204
-        }
     }
 }
 
