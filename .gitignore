@@ -1,22 +1,9 @@
-# Visual Studio files
-.vs/
-*.user
-*.suo
-
-# Build results
-bin/
-obj/
-
-# Logs
-*.log
-
-# Others
-*.cache
-# הגדרות סודיות
-appsettings.Development.json
+# Ignore appsettings.json
 appsettings.json
-secrets.json
 
-# קבצי סביבה
-.env
-.env.*
+# Ignore sensitive keys
+*.key
+*.pem
+
+# Ignore other files you don't want to push
+*.env
